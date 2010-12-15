@@ -94,7 +94,6 @@ endfunction
 
 function! IniParser#Read(arg) " {{{1
 
-    let l:result_list = []
     let l:result_dic = {}
     let l:cur_group = []
 
