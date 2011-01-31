@@ -3,10 +3,11 @@
 let s:saved_cpo = &cpo
 set cpo&vim
 
-" Get the version number. It equals to the version number times 100. For
-" example, version 0.1 is corresponding to 10, version 2.3 is corresponding to
-" 230
 function! IniParser#GetVersion() " {{{1
+    " Get the version number. It equals to the version number times 100. For
+    " example, version 0.1 is corresponding to 10, version 2.3 is
+    " corresponding to 230
+
     return 10
 endfunction
 
@@ -101,9 +102,9 @@ function! s:TrimString(str, ...) " {{{2
     return strpart(a:str, l:str_begin, l:str_end-l:str_begin+1)
 endfunction
 
-" Read the ini file, the parameter could be either a file name or a list
-" containing the lines of the ini file.
 function! IniParser#Read(arg) " {{{1
+    " Read the ini file, the parameter could be either a file name or a list
+    " containing the lines of the ini file.
 
     let l:result_dic = {}
     let l:cur_group = [] " group indicated by '[]' in the ini file
