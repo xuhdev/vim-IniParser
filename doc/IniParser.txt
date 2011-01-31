@@ -14,7 +14,7 @@ CONTENTS~
 ----------------------------------------------------------------------------
 1. Overview                                 |IniParser-overview|
 2. Functions                                |IniParser-commands|
-4. Installation                             |IniParser-installation|
+3. Installation                             |IniParser-installation|
 
 
 OVERVIEW~
@@ -45,7 +45,7 @@ satellites=2
 Now we want to know the mass of Mars and the radius of the Earth by vimscript.
 First we need to parse the file by calling IniParser#Read:
 >
- let ini_result = IniParser#Read('./planet.ini')
+ let ini_result = IniParser#Read('./planets.ini')
 <
 
 Then the following two lines shows the mass of Mars and the radius of the
