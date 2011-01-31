@@ -105,9 +105,8 @@ endfunction
 " containing the lines of the ini file.
 function! IniParser#Read(arg) " {{{1
 
-    let l:result_list = []
     let l:result_dic = {}
-    let l:cur_group = []
+    let l:cur_group = [] " group indicated by '[]' in the ini file
 
     for line in a:arg
         let line = s:TrimString(line)
@@ -126,9 +125,18 @@ function! IniParser#Read(arg) " {{{1
         elseif !empty(l:cur_group) && match(line, '=') != -1
         " it's an entry line
 
+            " copy l:cur_group
             let l:list_to_add = deepcopy(l:cur_group)
+
+            " find the '=' position
             let l:eq_position = match(line, '=')
-            call add(l:list_to_add, strpart(line, 0, l:eq_position))
+
+            " l:eq_left is the string at the left of the '='. split it by '/'
+            " because this also changes group.
+            let l:eq_left = strpart(line, 0, l:eq_position)
+            call extend(l:list_to_add, split(l:eq_left, '/'))
+
+            " add the string at the right side of the '=' directly
             call add(l:list_to_add, strpart(line, l:eq_position + 1, 
                         \l:line_len - l:eq_position - 1))
             call s:DictModifyReclusively(l:result_dic, l:list_to_add)
