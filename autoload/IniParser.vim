@@ -106,6 +106,22 @@ function! IniParser#Read(arg) " {{{1
     " Read the ini file, the parameter could be either a file name or a list
     " containing the lines of the ini file.
 
+    if type(a:arg) == type('')
+        " this is a file name when a:arg is a string. Read the file and then
+        " call the function with a list parameter.
+
+        return IniParser#Read(readfile(a:arg))
+
+    elseif type(a:arg) != type([])
+        " if the type is neither a string or a list, then gives an error
+        " message and returns an empty dict.
+
+        
+        echohl ErrorMsg | 
+                    \echo 'IniParser: IniParser#Read parameter type error!' 
+                    \| echohl None
+    endif
+
     let l:result_dic = {}
     let l:cur_group = [] " group indicated by '[]' in the ini file
 
