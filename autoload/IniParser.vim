@@ -1,4 +1,6 @@
+" File: autoload/IniParser.vim
 " version 0.1
+" See doc/IniParser.txt for more information.
 
 let s:saved_cpo = &cpo
 set cpo&vim
