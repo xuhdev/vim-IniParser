@@ -1,13 +1,22 @@
+" version 0.1
 
 let s:saved_cpo = &cpo
 set cpo&vim
+
+" Get the version number. It equals to the version number times 100. For
+" example, version 0.1 is corresponding to 10, version 2.3 is corresponding to
+" 230
+function! IniParser#GetVersion() " {{{1
+    return 10
+endfunction
 
 " utils {{{1
 function! s:DictModifyReclusively(dict, ...) " {{{2
 
     if a:0 == 0 || (a:0 == 1 && type(a:1) != type([]))
         echohl ErrorMsg | 
-                    \echo 'DictModifyReclusively parameter error!' | echohl None
+                    \echo 'DictModifyReclusively parameter error!' 
+                    \| echohl None
         return -1
     endif
     
@@ -92,6 +101,8 @@ function! s:TrimString(str, ...) " {{{2
     return strpart(a:str, l:str_begin, l:str_end-l:str_begin+1)
 endfunction
 
+" Read the ini file, the parameter could be either a file name or a list
+" containing the lines of the ini file.
 function! IniParser#Read(arg) " {{{1
 
     let l:result_list = []
