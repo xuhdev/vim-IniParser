@@ -16,7 +16,7 @@ function! s:DictModifyReclusively(dict, ...) " {{{2
 
     if a:0 == 0 || (a:0 == 1 && type(a:1) != type([]))
         echohl ErrorMsg | 
-                    \echo 'DictModifyReclusively parameter error!' 
+                    \echo 'IniParser: DictModifyReclusively parameter error!' 
                     \| echohl None
         return -1
     endif
@@ -25,8 +25,9 @@ function! s:DictModifyReclusively(dict, ...) " {{{2
         let l:key_val_list = a:1
         if len(l:key_val_list) < 2
             echohl ErrorMsg | 
-                        \echo 'DictModifyReclusively parameter error!' | 
-                        \echohl None
+                        \echo 
+                        \'IniParser: DictModifyReclusively parameter error!'
+                        \| echohl None
             return -1
         endif
     else
@@ -120,6 +121,7 @@ function! IniParser#Read(arg) " {{{1
         echohl ErrorMsg | 
                     \echo 'IniParser: IniParser#Read parameter type error!' 
                     \| echohl None
+        return {}
     endif
 
     let l:result_dic = {}
