@@ -51,8 +51,8 @@ First we need to parse the file by calling IniParser#Read:
 Then the following two lines shows the mass of Mars and the radius of the
 Earth respectively:
 >
- echo ini_result['Mars']['radius']
- echo ini_result['Earth']['mass']
+ echo ini_result['Mars']['mass']
+ echo ini_result['Earth']['radius']
 <
 
 Here's a little explanation:
