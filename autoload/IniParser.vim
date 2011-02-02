@@ -113,6 +113,12 @@ function! IniParser#Read(arg) " {{{1
         " this is a file name when a:arg is a string. Read the file and then
         " call the function with a list parameter.
 
+        if !filereadable(a:arg)
+            " if file is not readable, return 1
+
+            return 1
+        endif
+
         return IniParser#Read(readfile(a:arg))
 
     elseif type(a:arg) != type([])
