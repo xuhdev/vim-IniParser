@@ -1,5 +1,5 @@
 " File: autoload/IniParser.vim
-" version 0.1
+" version 0.1.1
 " See doc/IniParser.txt for more information.
 
 let s:saved_cpo = &cpo
@@ -10,7 +10,7 @@ function! IniParser#GetVersion() " {{{1
     " example, version 0.1 is corresponding to 10, version 2.3 is
     " corresponding to 230
 
-    return 10
+    return 11
 endfunction
 
 " utils {{{1
@@ -122,7 +122,7 @@ function! IniParser#Read(arg) " {{{1
         return IniParser#Read(readfile(a:arg))
 
     elseif type(a:arg) != type([])
-        " if the type is neither a string or a list, returns 2        
+        " if the type is neither a string nor a list, returns 2        
 
         return 2
     endif
