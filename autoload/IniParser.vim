@@ -122,14 +122,9 @@ function! IniParser#Read(arg) " {{{1
         return IniParser#Read(readfile(a:arg))
 
     elseif type(a:arg) != type([])
-        " if the type is neither a string or a list, then gives an error
-        " message and returns an empty dict.
+        " if the type is neither a string or a list, returns 2        
 
-        
-        echohl ErrorMsg | 
-                    \echo 'IniParser: IniParser#Read parameter type error!' 
-                    \| echohl None
-        return {}
+        return 2
     endif
 
     let l:result_dic = {}
