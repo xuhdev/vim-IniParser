@@ -172,6 +172,50 @@ function! IniParser#Read(arg) " {{{1
     return l:result_dic
 endfunction
 
+function! s:WriteToList(ini_sub_dict, prefix) " {{{1
+    let l:ret_list = []
+
+    for key in keys(a:ini_sub_dict)
+        let l:value = a:ini_sub_dict[key]
+
+        if type(l:value) == type({})
+            call extend(l:ret_list, s:WriteToList(l:value, prefix.key.'/'))
+        elseif type(l:value) == type('')
+            call add(l:ret_list, a:prefix.key.'='.l:value)
+        endif
+    endfor
+
+    return l:ret_list
+endfunction
+
+function! IniParser#Write(ini_dict, ...) " {{{1
+    " write to ini file, the first argument is a dict, whose format is the
+    " same with the return value of IniParser#Read; if the second argument is
+    " provided, it should be the ini file name which we want to write to, and
+    " the function will try to write to the file. If the second argument is
+    " not provided, then the function will not write anything to file. If any
+    " error occured, the return value is a number. If the function succeeds,
+    " the return value is a list containing the content of the ini file. The
+    " format of the list is 
+
+    if type(a:ini_dict) != type({})
+        return 1
+    endif
+
+    let l:ini_list = []
+
+    for key in keys(a:ini_dict)
+        call add(l:ini_list, '['.key.']')
+        let l:value = a:ini_dict[key]
+
+        if type(l:value) == type({})
+            call extend(l:ini_list, s:WriteToList(l:value, ''))
+        endif
+    endfor
+
+    return l:ini_list
+endfunction
+
 " }}}
 
 let &cpo = s:saved_cpo
