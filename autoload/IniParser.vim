@@ -1,5 +1,5 @@
 " File: autoload/IniParser.vim
-" version 0.1.1
+" version 0.2
 " See doc/IniParser.txt for more information.
 
 let s:saved_cpo = &cpo
@@ -10,7 +10,7 @@ function! IniParser#GetVersion() " {{{1
     " example, version 0.1 is corresponding to 10, version 2.3 is
     " corresponding to 230
 
-    return 11
+    return 20
 endfunction
 
 " utils {{{1
@@ -173,6 +173,7 @@ function! IniParser#Read(arg) " {{{1
 endfunction
 
 function! s:WriteToList(ini_sub_dict, prefix) " {{{1
+
     let l:ret_list = []
 
     for key in keys(a:ini_sub_dict)
