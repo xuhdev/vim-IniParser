@@ -196,7 +196,8 @@ function! IniParser#Write(ini_dict, ...) " {{{1
     " not provided, then the function will not write anything to file. If any
     " error occured, the return value is a number. If the function succeeds,
     " the return value is a list containing the content of the ini file. The
-    " format of the list is 
+    " format of the list is the same as the list argument of the function
+    " writefile().
 
     if type(a:ini_dict) != type({})
         return 1
@@ -221,4 +222,4 @@ endfunction
 let &cpo = s:saved_cpo
 unlet! s:saved_cpo
 
-" vim: fdm=marker et ts=4 tw=78 sw=4 fdc=1
+" vim: fdm=marker et ts=4 tw=78 sw=4 fdc=3
