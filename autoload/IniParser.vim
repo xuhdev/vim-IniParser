@@ -205,6 +205,7 @@ function! IniParser#Write(ini_dict, ...) " {{{1
 
     let l:ini_list = []
 
+    " write to the list
     for key in keys(a:ini_dict)
         call add(l:ini_list, '['.key.']')
         let l:value = a:ini_dict[key]
@@ -213,6 +214,13 @@ function! IniParser#Write(ini_dict, ...) " {{{1
             call extend(l:ini_list, s:WriteToList(l:value, ''))
         endif
     endfor
+
+    " write to the file if the second parameter is given
+    if a:0 == 1 && type(a:1) == type('')
+        if writefile(l:ini_list, a:1) == -1
+            return 2
+        endif
+    endif
 
     return l:ini_list
 endfunction
