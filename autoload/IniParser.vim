@@ -65,7 +65,7 @@ function! s:TrimString(str, ...) " {{{2
     if a:0 == 1
         let l:blank_chars = a:1
     else
-        let l:blank_chars = " \t"
+        let l:blank_chars = " \t\r\n"
     endif
 
 
