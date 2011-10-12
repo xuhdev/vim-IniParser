@@ -156,11 +156,17 @@ function! IniParser#Read(arg) " {{{1
             " l:eq_left is the string at the left of the '='. split it by '/'
             " because this also changes group.
             let l:eq_left = strpart(line, 0, l:eq_position)
-            call extend(l:list_to_add, split(l:eq_left, '/'))
+            let l:groups = split(l:eq_left, '/')
+            for i in range(len(l:groups))
+                let l:groups[i] = s:TrimString(l:groups[i])
+            endfor
+            call extend(l:list_to_add, l:groups)
 
-            " add the string at the right side of the '=' directly
-            call add(l:list_to_add, strpart(line, l:eq_position + 1, 
-                        \l:line_len - l:eq_position - 1))
+            " add the string at the right side of the '=' directly with blank
+            " characters on the two sides removed
+            call add(l:list_to_add, s:TrimString(
+                        \ strpart(line, l:eq_position + 1,
+                        \ l:line_len - l:eq_position - 1)))
             call s:DictModifyReclusively(l:result_dic, l:list_to_add)
         else
         " should be a syntax error. Don't give an error message on the screen,
