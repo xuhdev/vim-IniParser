@@ -163,10 +163,15 @@ function! IniParser#Read(arg) " {{{1
             call extend(l:list_to_add, l:groups)
 
             " add the string at the right side of the '=' directly with blank
-            " characters on the two sides removed
-            call add(l:list_to_add, s:TrimString(
-                        \ strpart(line, l:eq_position + 1,
-                        \ l:line_len - l:eq_position - 1)))
+            " characters on the two sides removed. But if the right side of
+            " the '=' is empty, then just put an empty string into the value
+            if l:eq_position == strlen(line) - 1 " = is at the last position
+                call add(l:list_to_add, '')
+            else
+                call add(l:list_to_add, s:TrimString(
+                            \ strpart(line, l:eq_position + 1,
+                            \ l:line_len - l:eq_position - 1)))
+            endif
             call s:DictModifyReclusively(l:result_dic, l:list_to_add)
         else
         " should be a syntax error. Don't give an error message on the screen,
