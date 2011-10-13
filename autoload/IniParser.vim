@@ -242,4 +242,5 @@ endfunction
 let &cpo = s:saved_cpo
 unlet! s:saved_cpo
 
+" vim73: cc=78
 " vim: fdm=marker et ts=4 tw=78 sw=4 fdc=3
