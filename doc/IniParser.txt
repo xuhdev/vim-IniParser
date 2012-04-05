@@ -76,7 +76,7 @@ https://github.com/xuhdev/vim-IniParser/issues
 
 Repository:
 Git on GitHub: https://github.com/xuhdev/vim-IniParser
-Mercurial on Bitbucket.org: https://bitbucket.org/xuhdev/iniparser
+(The original Mercurial repository is deleted)
 
 FUNCTIONS~
                                             *IniParser-functions*
