@@ -70,8 +70,13 @@ Here's the result:
  {'Earth': {'mass': '5.9742e24 kg', 'radius': '6378.1 km', 'satellites': '1'}, 'Venus': {'mass': '4.86900e24 kg', 'radius': '6051.8 km', 'satellites': '0'}, 'Mars': {'mass': '0.64191e24 kg', 'radius': '3397 km', 'satellites': '2'}}
 <
 
-If you're familiar with the dictionary of vimscript, you should understand
-now.
+If you find any bug, please report it to xuhdev@gmail.com or submit it on
+the issue tracker:
+https://github.com/xuhdev/vim-IniParser/issues
+
+Repository:
+Git on GitHub: https://github.com/xuhdev/vim-IniParser
+Mercurial on Bitbucket.org: https://bitbucket.org/xuhdev/iniparser
 
 FUNCTIONS~
                                             *IniParser-functions*
