@@ -2,7 +2,7 @@
 
 File: doc/IniParser.txt
 Version: 0.2.2
-Author: H Xu(xuhdev AT gmail DOT com)
+Author: H Xu(dev AT hong DOT me)
 Last Change: 16 October, 2011
 Description: This plugin provides a function for parsing ini files.
 License: You can redistribute this plugin and/or modify it under the terms 
